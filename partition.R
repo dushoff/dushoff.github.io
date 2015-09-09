@@ -13,14 +13,10 @@ build <- function(vl, last=1, big=0, enough=20){
 		}
 	}
 	else {
-		if (
-			pmin(max(vl$v1), max(vl$v2)) > enough/5
-			& pmin(length(vl$v1), length(vl$v2)) > sqrt(enough)/2
-		)
-			print(vl)
+		print(vl)
 	}
 }
 
 build(list(v1=c(0), v2=c(0, 1))
-	, last=1, big=0, enough=200
+	, last=1, big=0, enough=80
 )
