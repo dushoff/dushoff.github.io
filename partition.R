@@ -6,17 +6,21 @@ build <- function(vl, last=1, big=0, enough=20){
 		big <- missing
 	}
 	if(missing<enough){
-		for (curr in (c(last, 3-last))){
+		for (curr in (1:2)){
 			nl <- vl
 			nl[[curr]] <- c(nl[[curr]], missing)
 			build(nl, last=3-last, big=big, enough=enough)
 		}
 	}
 	else {
-		print(length(vl$v1)*length(vl$v2))
+		if (
+			pmin(max(vl$v1), max(vl$v2)) > enough/5
+			& pmin(length(vl$v1), length(vl$v2)) > sqrt(enough)/2
+		)
+			print(vl)
 	}
 }
 
-build(list(v1=c(0), v2=c(0))
-	, last=1, big=0, enough=100
+build(list(v1=c(0), v2=c(0, 1))
+	, last=1, big=0, enough=200
 )
