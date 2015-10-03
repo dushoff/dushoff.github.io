@@ -10,4 +10,5 @@ commit.txt
 *.bbl
 
 *.Rout
+*.RData
 *.out
