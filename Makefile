@@ -3,22 +3,28 @@
 ### Hooks for the editor to set the default target
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: partition.Rout 
+target pngtarget pdftarget vtarget acrtarget: phi_notes.pdf 
 
 ##################################################################
 
 # make files
 
-Sources = Makefile .gitignore
+Sources = Makefile .gitignore README.md
+
+ms = ../makestuff
+-include $(ms)/git.def
 
 ######################################################################
+
+Sources += phi_notes.tex
+phi_notes.pdf: phi_notes.tex
+
+Ry.pdf: Ry.tex
 
 ### Stuff ###
 
 Sources += partition.R
 partition.Rout: partition.R
-
-ms = ../makestuff
 
 -include $(ms)/local.mk
 -include local.mk
@@ -27,5 +33,5 @@ ms = ../makestuff
 -include $(ms)/visual.mk
 -include $(ms)/linux.mk
 
--include $(ms)/RR.mk
-# -include oldlatex.mk
+-include $(ms)/wrapR.mk
+-include $(ms)/oldlatex.mk

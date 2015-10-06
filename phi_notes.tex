@@ -1,0 +1,28 @@
+\documentclass[12pt]{article}
+\usepackage{./commands}
+
+\newcommand{\Ry}{\ensuremath{\cal R}}
+
+\begin{document}
+
+\subsection*{Notes on intervention speed}
+
+Renewal equation.
+
+$$i_s(t) = i(s) \Rx S(t) g(t-s)$$
+
+$$i(t) = \int{i(s) \Rx S(t) g(t-s)} ds$$
+
+We imagine an invading disease with kernel $k(\tau) = \Rx g(\tau)$. 
+$g(\tau)$ is the ``intrinsic'' generation interval, and \Rx\ is the effective reproductive number.
+
+The exponential rate of spread $r$ is given by:
+
+\begin{equation}
+	\int{k(\tau)) \exp(-r\tau) d\tau} = 1
+\end{equation}
+
+Now define $b_0(\tau) = k(\tau)) \exp(-r\tau) d\tau$. This is a distribution (since it integrates to 1), and is in fact the backward generation distribution during the exponential growth phase.
+
+\end{document}
+
