@@ -16,7 +16,7 @@ ms = ../makestuff
 
 ######################################################################
 
-Sources += phi_notes.tex
+Sources += phi_notes.tex commands.sty
 phi_notes.pdf: phi_notes.tex
 
 Ry.pdf: Ry.tex
