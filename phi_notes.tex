@@ -9,9 +9,10 @@
 
 Renewal equation.
 
-$$i_s(t) = i(s) \Rx S(t) g(t-s)$$
+$$i_s(t) = i(s) K(t-s) S(t)/N$$
 
-$$i(t) = \int{i(s) \Rx S(t) g(t-s)} ds$$
+$$i(t) = S(t)/N \int{i(s) K(t-s)} ds \approx \int{i(s) K(t-s)}$$
+
 
 We imagine an invading disease with kernel $k(\tau) = \Rx g(\tau)$. 
 $g(\tau)$ is the ``intrinsic'' generation interval, and \Rx\ is the effective reproductive number.
