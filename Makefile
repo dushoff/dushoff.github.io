@@ -3,13 +3,20 @@
 ### Hooks for the editor to set the default target
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: partition.Rout 
+target pngtarget pdftarget vtarget acrtarget: jekyll_install 
 
 ##################################################################
 
 # make files
 
-Sources = Makefile .gitignore
+Sources = Makefile .gitignore Gemfile
+
+######################################################################
+
+### Jekyll
+
+jekyll_install:
+	bundle install
 
 ######################################################################
 
@@ -17,6 +24,7 @@ Sources = Makefile .gitignore
 
 Sources += partition.R
 partition.Rout: partition.R
+
 
 ms = ../makestuff
 
@@ -27,5 +35,5 @@ ms = ../makestuff
 -include $(ms)/visual.mk
 -include $(ms)/linux.mk
 
--include $(ms)/RR.mk
+-include $(ms)/wrapR.mk
 # -include oldlatex.mk

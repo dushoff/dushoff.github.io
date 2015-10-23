@@ -13,10 +13,12 @@ build <- function(vl, last=1, big=0, enough=20){
 		}
 	}
 	else {
-		print(vl)
+		if(min(max(vl$v1), max(vl$v2) > enough/4))
+			print(vl)
 	}
 }
 
 build(list(v1=c(0), v2=c(0, 1))
 	, last=1, big=0, enough=80
 )
+
