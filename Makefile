@@ -10,8 +10,11 @@ target pngtarget pdftarget vtarget acrtarget: jekyll_update
 # make files
 
 Sources = Makefile .gitignore Gemfile
-ms = ../makestuff
--include $(ms)/git.def
+
+gitroot = ../
+-include local.mk
+ms = $(gitroot)/makestuff
+-include $(gitroot)/local.mk
 
 ######################################################################
 
@@ -46,13 +49,11 @@ Ry.pdf: Ry.tex
 Sources += partition.R
 partition.Rout: partition.R
 
--include $(ms)/local.mk
--include local.mk
 -include $(ms)/git.mk
 
 -include $(ms)/visual.mk
 -include $(ms)/linux.mk
 
 -include $(ms)/wrapR.mk
--include $(ms)/oldlatex.mk
+-include $(ms)/newlatex.mk
 
