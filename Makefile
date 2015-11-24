@@ -3,7 +3,7 @@
 ### Hooks for the editor to set the default target
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: jekyll_update 
+target pngtarget pdftarget vtarget acrtarget: phi_notes.pdf 
 
 ##################################################################
 
@@ -41,8 +41,6 @@ serve:
 
 Sources += phi_notes.tex commands.sty
 phi_notes.pdf: phi_notes.tex
-
-Ry.pdf: Ry.tex
 
 ### Stuff ###
 

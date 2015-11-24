@@ -1,29 +1,63 @@
 \documentclass[12pt]{article}
 \usepackage{./commands}
 
-\newcommand{\Ry}{\ensuremath{\cal R}}
-
 \begin{document}
 
-\subsection*{Notes on intervention speed}
+\section*{Strength and speed of intervention}
 
-Renewal equation.
+\subsection*{Renewal equation}
 
-$$i_s(t) = i(s) K(t-s) S(t)/N$$
+$$i_s(t) = i(s) k(t-s) S(t)/N$$
 
-$$i(t) = S(t)/N \int{i(s) K(t-s)} ds \approx \int{i(s) K(t-s)}$$
+$$i(t) = S(t)/N \int{i(s) k(t-s)} ds \approx \int{i(s) k(t-s)}$$
+
+$$ = \int i(t-\tau) k(\tau) d\tau $$
+
+\subsection*{Strength}
+
+$\Rx = \int{k(\tau) d\tau}$ is the reproductive number, and 
+$g(\tau) = k(\tau)/\Rx$ is the ``intrinsic'' generation interval.
+
+If we have an intervention that reduces $k(\tau)$ to $\hat k(\tau) \equiv k(\tau)/L(\tau)$ then the reproductive number after intervention is $\hatR = \int{\hat k(\tau) d\tau}$. 
+
+We define the \emph{strength} of the intervention to be $\strength = \Rx/\hatR$ -- the proportional amount by which the intervention reduces transmission.
+
+We can then show that \strength\ is the harmonic mean of $L$, weighted by the generation distribution $g$.
+
+The outbreak can be controlled ($\hatR<1$) iff $\strength > \Rx$.
+
+\subsubsection*{Math}
+
+$$\theta = \frac{R}{\int{k(\tau)/L(\tau)d\tau}}$$
+
+$$ = \frac{1}{\int{g(\tau)/L(\tau)d\tau}}$$
+
+$$ = 1/\left\langle 1/L(\tau) \right\rangle_{g(\tau)}$$
+
+\subsection*{Speed}
+
+The solution $r$ of $\int{k(\tau) \exp(-r\tau) d\tau} = 1$ is the 
+exponential rate of spread, and $b(\tau) = k(\tau) \exp(-r\tau)$ is the initial ``backward'' generation distribution.
+
+Under the intervention $L(\tau)$, the exponential rate of spread $\hat r$ solves $\hat r = \int{\hat k(\tau) \exp(-\hat r\tau) d\tau}$. 
+
+We define the \emph{speed} of the intervention to be $\speed = r-\hat r$ -- the amount by which the intervention slows down spread. 
+
+We can then show that $\exp(\speed\tau)/L(\tau)$ has a weighted mean of 1 over the initial backward generation distribution. Thus \speed\ is an approximation of the rate of exponential growth of $L(\tau)$
+
+The outbreak can be controlled ($\hat r<0$) iff $\speed > r$.
+
+\subsubsection*{Math}
+
+$$1 = \int{\hat k(\tau)\exp(-\hat r(\tau)) d\tau}$$
+
+$$ = \int{\frac{k(\tau)}{L(\tau)}\exp(-(r-\speed)\tau) d\tau} $$
+
+$$ = \int{k(\tau)\exp(-r\tau)\frac{\exp(\speed\tau)}{L(\tau)} d\tau} $$
+
+$$ = \left\langle \frac{\exp(\speed\tau)}{L(\tau)} \right\rangle_{b(\tau)}$$
 
 
-We imagine an invading disease with kernel $k(\tau) = \Rx g(\tau)$. 
-$g(\tau)$ is the ``intrinsic'' generation interval, and \Rx\ is the effective reproductive number.
-
-The exponential rate of spread $r$ is given by:
-
-\begin{equation}
-	\int{k(\tau)) \exp(-r\tau) d\tau} = 1
-\end{equation}
-
-Now define $b_0(\tau) = k(\tau)) \exp(-r\tau) d\tau$. This is a distribution (since it integrates to 1), and is in fact the backward generation distribution during the exponential growth phase.
 
 \end{document}
 
