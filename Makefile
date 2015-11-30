@@ -3,7 +3,7 @@
 ### Hooks for the editor to set the default target
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: phi_notes.pdf 
+target pngtarget pdftarget vtarget acrtarget: ss.Rout 
 
 ##################################################################
 
@@ -39,13 +39,19 @@ serve:
 
 ######################################################################
 
+# Speed and strength
+
 Sources += phi_notes.tex commands.sty
 phi_notes.pdf: phi_notes.tex
 
-### Stuff ###
+Sources += $(wildcard *.R)
 
-Sources += partition.R
-partition.Rout: partition.R
+HIVfuns.Rout: HIVfuns.R
+kernel.Rout: kernel.R
+
+ss.Rout: HIVfuns.Rout kernel.Rout ss.R
+
+##################################################################
 
 -include $(ms)/git.mk
 
