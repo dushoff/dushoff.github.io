@@ -60,10 +60,21 @@ densPlot <- function(time, k, scen, color="black"){
 	})
 }
 
-Rplot <- function(g, R, scen){
+Rrplot <- function(g, R, scen){
+	r <- R2r(g, R)
+	b0 <- b0fun(g, r)
+	print(b0)
 	with(g, {
 		densPlot(time, R*density, scen)
+
 		densPlot(time, R*density, scen)
-		lines(time, density)
+		lines(time, density, col="blue")
+		lines(time, b0$density, col="red")
+
+		densPlot(time, R*density, scen)
+		lines(time, density, col="blue")
+
+		densPlot(time, R*density, scen)
+		lines(time, b0$density, col="red")
 	})
 }

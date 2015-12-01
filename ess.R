@@ -1,11 +1,13 @@
+par(cex=1.6)
 
 r <- 1/24
 bProp <- 0.25
 
 g <- EbolaGen(bProp=bProp)
-R <- r2R(g, r=r)
 scen <- list(disease="Ebola", unit="days")
 
-Rplot(g, R, scen)
+R <- r2R(g, r=r)
+print(R)
 
+Rrplot(g, R, scen)
 
