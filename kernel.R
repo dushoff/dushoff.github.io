@@ -48,3 +48,22 @@ theFun <- function(g, L){
 		1/(step*sum(density/strength))
 	}))
 }
+
+densPlot <- function(time, k, scen, color="black"){
+	with(c(scen), {
+		plot(time, k
+			, main = disease
+			, xlab = paste0("time (", unit, ")")
+			, ylab = "Density"
+			, type = "l", col=color
+		)
+	})
+}
+
+Rplot <- function(g, R, scen){
+	with(g, {
+		densPlot(time, R*density, scen)
+		densPlot(time, R*density, scen)
+		lines(time, density)
+	})
+}

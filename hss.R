@@ -1,4 +1,3 @@
-
 earlyProp=1/3
 r = 1/18
 

@@ -3,7 +3,7 @@
 ### Hooks for the editor to set the default target
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: ss.Rout 
+target pngtarget pdftarget vtarget acrtarget: ess.Rout 
 
 ##################################################################
 
@@ -46,10 +46,13 @@ phi_notes.pdf: phi_notes.tex
 
 Sources += $(wildcard *.R)
 
+EbolaFuns.Rout: EbolaFuns.R
 HIVfuns.Rout: HIVfuns.R
 kernel.Rout: kernel.R
 
-ss.Rout: HIVfuns.Rout kernel.Rout ss.R
+## Speed and strength talk
+hss.Rout: HIVfuns.Rout kernel.Rout hss.R
+ess.Rout: EbolaFuns.Rout kernel.Rout ess.R
 
 ##################################################################
 
