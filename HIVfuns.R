@@ -2,7 +2,7 @@
 # Units of g are 1/month, so Sum{step*g) should be 1
 
 testingFun <- function(maxRate
-	, hMean=12, hShape=2, hheight=5
+	, hMean=12, hShape=2, hheight=4
 	, step = 0.25, window=150
 ){
 	time <- seq(step, window, by=step)
@@ -13,6 +13,17 @@ testingFun <- function(maxRate
 	return(data.frame(time
 		, hazRate
 		, strength = exp(Haz)
+	))
+}
+
+flatFun <- function(L
+	, step = 0.25, window=150
+){
+	time <- seq(step, window, by=step)
+	hazRate <- 0*time
+	return(data.frame(time
+		, hazRate
+		, strength = hazRate+L
 	))
 }
 

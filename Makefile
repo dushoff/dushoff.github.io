@@ -3,7 +3,7 @@
 ### Hooks for the editor to set the default target
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: hss.Rout 
+target pngtarget pdftarget vtarget acrtarget: sir.plot.Rout 
 
 ##################################################################
 
@@ -21,6 +21,11 @@ ms = $(gitroot)/makestuff
 Sources += _layouts/*.html _config.yml
 
 ######################################################################
+
+sir.Rout: sir.R
+
+sir.plot.Rout: sir.Rout plot.R
+	$(run-R)
 
 ### Jekyll
 
@@ -53,6 +58,14 @@ kernel.Rout: kernel.R
 ## Speed and strength talk
 hss.Rout: HIVfuns.Rout kernel.Rout hss.R
 ess.Rout: EbolaFuns.Rout kernel.Rout ess.R
+
+flat.Rout: hss.Rout flat.R
+test.Rout: hss.Rout test.R
+
+test.scen.Rout: HIVscen.R
+flat.scen.Rout: HIVscen.R
+%.scen.Rout: %.Rout HIVscen.R
+	$(run-R)
 
 ##################################################################
 

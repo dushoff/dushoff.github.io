@@ -54,7 +54,7 @@ densPlot <- function(time, k, scen, color="black"){
 		plot(time, k
 			, main = disease
 			, xlab = paste0("time (", unit, ")")
-			, ylab = "Density"
+			, ylab = paste0("Density (1/", unit, ")")
 			, type = "l", col=color
 		)
 	})
@@ -77,4 +77,35 @@ Rrplot <- function(g, R, scen){
 		densPlot(time, R*density, scen)
 		lines(time, b0$density, col="red")
 	})
+}
+
+dualPlot <- function(time, interv, intname, gen, stat, dtype){
+	op <- par(mfrow=c(2, 1)
+		, oma = c(0,0,0,0) + 0.1
+		, mar = c(0,4,1,1) + 0.1
+	)
+	plot(time, interv, type="l"
+		, axes=FALSE, xlab="", ylab=intname
+	)
+	axis(2)
+	abline(h=stat, col="blue")
+	par(mar = c(5,4,1,1) + 0.1)
+	with(gen, plot(time, density, type="l", main=dtype))
+	par(op)
+}
+
+intPlot <- function(time, density, strength, R){
+	op <- par(mfrow=c(2, 1)
+		, oma = c(0,0,0,0) + 0.1
+		, mar = c(0,4,1,1) + 0.1
+	)
+	plot(time, strength, type="l"
+		, axes=FALSE, xlab="", main="Intervention"
+	)
+	axis(2)
+
+	par(mar = c(5,4,1,1) + 0.1)
+	plot(time, R*density, ylab="kernel", type="l", main="Before and after")
+	lines(time, R*density/strength, type="l")
+	par(op)
 }
