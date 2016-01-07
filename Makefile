@@ -27,6 +27,9 @@ sir.Rout: sir.R
 sir.plot.Rout: sir.Rout plot.R
 	$(run-R)
 
+
+Sources += bio.txt
+
 ### Jekyll
 
 ### Lots of linking to /usr/bin/local
