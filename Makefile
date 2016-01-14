@@ -3,7 +3,7 @@
 ### Hooks for the editor to set the default target
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: sir.plot.Rout 
+target pngtarget pdftarget vtarget acrtarget: test.sheet.account.txt 
 
 ##################################################################
 
@@ -41,8 +41,15 @@ jekyll_install:
 jekyll_update:
 	bundle update github-pages
 
-serve:
-	bundle exec jekyll serve
+######################################################################
+
+# Accounts
+
+test.sheet = https://docs.google.com/spreadsheets/d/1uTYrqHizf0B8V_s6WWMlyi7de4P5ItTeeBtQmdhvnDU
+
+test.sheet.tsv:
+
+test.sheet.account.txt: test.sheet.tsv 
 
 ######################################################################
 
@@ -78,4 +85,5 @@ flat.scen.Rout: HIVscen.R
 
 -include $(ms)/wrapR.mk
 -include $(ms)/newlatex.mk
+-include $(ms)/accounts.mk
 
