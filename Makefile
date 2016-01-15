@@ -3,7 +3,7 @@
 ### Hooks for the editor to set the default target
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: test.sheet.account.txt 
+target pngtarget pdftarget vtarget acrtarget: whiteoak.sheet.account.txt 
 
 ##################################################################
 
@@ -50,6 +50,10 @@ test.sheet = https://docs.google.com/spreadsheets/d/1uTYrqHizf0B8V_s6WWMlyi7de4P
 test.sheet.tsv:
 
 test.sheet.account.txt: test.sheet.tsv 
+
+whiteoak.sheet = https://docs.google.com/spreadsheets/d/1fI9i4Gye_SFg0qbcxlExjCjR_gk3dLgdQaTGts51sNo
+
+whiteoak.sheet.account.txt:
 
 ######################################################################
 
