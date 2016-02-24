@@ -9,7 +9,7 @@ target pngtarget pdftarget vtarget acrtarget: whiteoak.sheet.account.txt
 
 # make files
 
-Sources = Makefile .gitignore Gemfile
+Sources = Makefile .gitignore Gemfile README.md
 
 gitroot = ../
 -include local.mk
