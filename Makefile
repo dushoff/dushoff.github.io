@@ -82,6 +82,10 @@ flat.scen.Rout: HIVscen.R
 
 ##################################################################
 
+# Temporary (?) sharing location
+
+Sources += $(wildcard materials/*)
+
 -include $(ms)/git.mk
 
 -include $(ms)/visual.mk
