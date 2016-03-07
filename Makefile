@@ -3,7 +3,7 @@
 ### Hooks for the editor to set the default target
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: whiteoak.sheet.account.txt 
+target pngtarget pdftarget vtarget acrtarget: ggplotExample.Rout 
 
 ##################################################################
 
@@ -21,6 +21,8 @@ ms = $(gitroot)/makestuff
 Sources += _layouts/*.html _config.yml
 
 ######################################################################
+
+ggplotExample.Rout: ggplotExample.R
 
 sir.Rout: sir.R
 
