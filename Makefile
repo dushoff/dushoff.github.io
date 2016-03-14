@@ -1,6 +1,9 @@
 #### dushoff.github.io
 
 ### Hooks for the editor to set the default target
+
+tmp: serve
+
 current: target
 
 target pngtarget pdftarget vtarget acrtarget: ggplotExample.Rout 
@@ -9,18 +12,39 @@ target pngtarget pdftarget vtarget acrtarget: ggplotExample.Rout
 
 # make files
 
-Sources = Makefile .gitignore Gemfile README.md
+Sources = Makefile .gitignore README.md stuff.mk LICENSE.md
+include stuff.mk
+include $(ms)/os.mk
+include $(ms)/perl.def
 
-gitroot = ../
--include local.mk
-ms = $(gitroot)/makestuff
--include $(gitroot)/local.mk
+##################################################################
+
+## Content
+
+Sources += $(wildcard *.md) updates.html
+
+Sources += $(wildcard materials/*.*)
 
 ######################################################################
 
-Sources += _layouts/*.html _config.yml
+# Posts
+
+# Posts are made from drafts as a side effect of making *.post
+Sources += $(wildcard _posts/*.*)
+Sources += post.pl
+
+%.post: %.md post.pl
+	$(PUSH)
+	$(shell_execute)
+
+blog.post: blog.md
 
 ######################################################################
+
+# Jekyll
+
+Sources += _config.yml Gemfile
+Sources += $(wildcard _includes/* _layouts/* css/* _sass/*)
 
 ggplotExample.Rout: ggplotExample.R
 
@@ -30,20 +54,6 @@ sir.plot.Rout: sir.Rout plot.R
 	$(run-R)
 
 Sources += bio.txt
-
-### Jekyll
-
-### Lots of linking to /usr/bin/local
-### sudo apt-get install nodejs
-### gem install jekyll
-
-jekyll_install:
-	bundle install
-
-jekyll_update:
-	bundle update github-pages
-
-######################################################################
 
 # Accounts
 
@@ -84,16 +94,19 @@ flat.scen.Rout: HIVscen.R
 
 ##################################################################
 
-# Temporary (?) sharing location
-
-Sources += $(wildcard materials/*)
+### Makestuff
 
 -include $(ms)/git.mk
-
 -include $(ms)/visual.mk
--include $(ms)/linux.mk
 
 -include $(ms)/wrapR.mk
--include $(ms)/newlatex.mk
+# -include $(ms)/oldlatex.mk
 -include $(ms)/accounts.mk
 
+### Jekyll
+
+jekyll_install:
+	bundle install
+
+jekyll_update:
+	bundle update github-pages
