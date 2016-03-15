@@ -2,11 +2,9 @@
 
 ### Hooks for the editor to set the default target
 
-tmp: serve
-
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: ggplotExample.Rout 
+target pngtarget pdftarget vtarget acrtarget: contours.crop.png 
 
 ##################################################################
 
@@ -24,6 +22,16 @@ include $(ms)/perl.def
 Sources += $(wildcard *.md) updates.html
 
 Sources += $(wildcard materials/*.*)
+
+######################################################################
+
+## Images 
+
+contours.png:
+	wget -O $@ "http://journals.plos.org/plosone/article/figure/image?size=large&id=info:doi/10.1371/journal.pone.0028608.g002"
+
+contours.crop.png: contours.png Makefile
+	convert -crop 1245x634+080+0 $< $@
 
 ######################################################################
 
