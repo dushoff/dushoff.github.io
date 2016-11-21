@@ -90,7 +90,9 @@ dualPlot <- function(time, interv, intname, gen, stat, dtype){
 	axis(2)
 	abline(h=stat, col="blue")
 	par(mar = c(5,4,1,1) + 0.1)
-	with(gen, plot(time, density, type="l", main=dtype))
+	with(gen, plot(time, density
+		, type="l", main=dtype, xlab="time (months)"
+	))
 	par(op)
 }
 
