@@ -3,17 +3,16 @@
 ### Hooks for the editor to set the default target
 
 current: target
-
-target pngtarget pdftarget vtarget acrtarget: flat.scen.Rout 
+-include target.mk
 
 ##################################################################
 
 # make files
 
-Sources = Makefile .gitignore README.md stuff.mk LICENSE.md
-include stuff.mk
-include $(ms)/os.mk
-include $(ms)/perl.def
+Sources = Makefile .gitignore README.md sub.mk LICENSE.md
+include sub.mk
+-include $(ms)/os.mk
+-include $(ms)/perl.def
 
 ##################################################################
 
