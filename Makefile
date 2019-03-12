@@ -9,10 +9,18 @@ current: target
 
 # make files
 
-Sources = Makefile .gitignore README.md sub.mk LICENSE.md
-include sub.mk
+Sources += Makefile .gitignore README.md LICENSE.md
+
+ms = makestuff
+Sources += $(ms)
+Makefile: $(ms)/Makefile
+
 -include $(ms)/os.mk
 -include $(ms)/perl.def
+
+$(ms)/%.mk: $(ms)/Makefile ;
+$(ms)/Makefile:
+	git submodule update -i
 
 ##################################################################
 
@@ -101,6 +109,16 @@ flat.scen.Rout: HIVscen.R
 
 ##################################################################
 
+### Jekyll
+
+jekyll_install:
+	bundle install
+
+jekyll_update:
+	bundle update github-pages
+
+######################################################################
+
 ### Makestuff
 
 -include $(ms)/git.mk
@@ -109,11 +127,3 @@ flat.scen.Rout: HIVscen.R
 -include $(ms)/wrapR.mk
 # -include $(ms)/oldlatex.mk
 -include $(ms)/accounts.mk
-
-### Jekyll
-
-jekyll_install:
-	bundle install
-
-jekyll_update:
-	bundle update github-pages
