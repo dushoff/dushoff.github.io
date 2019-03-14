@@ -62,6 +62,7 @@ blog.post: blog.md
 
 # Jekyll
 
+Ignore += *.lock _site
 Sources += _config.yml Gemfile
 Sources += $(wildcard _includes/* _layouts/* css/* _sass/*)
 
